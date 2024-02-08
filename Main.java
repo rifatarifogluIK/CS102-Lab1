@@ -13,7 +13,10 @@ public class Main {
 
         for(int i = 0; i < 5; i++){
             arr[i] = rand.nextInt(0, 100);
+            System.out.print(arr[i] + " ");
         }
+
+        System.out.println();
 
         while (input != 6) {
             System.out.print("1-Find minimum\n2-Find maximum\n3-Get differences from avarages\n4-Find sum of odd-indexes\n5-Find sum of even-indexes\n6-Exit\nChoice:");
@@ -21,11 +24,17 @@ public class Main {
             newLine = in.nextLine();
 
             if(input == 1){
-                System.out.println(findMax(arr));
+                System.out.println(findMin(arr));
             }else if(input == 2){
                 System.out.println(findMax(arr));
             }else if(input == 3){
-                int[] temp = 
+                int[] temp = findSubstractAverage(arr);
+
+                for(int i = 0; i < temp.length; i++){
+                    System.out.print(temp[i] + " ");
+                }
+
+                System.out.println();
             }else if(input == 4){
                 System.out.println(sumOfOdd(arr));
             }else if(input == 5){
@@ -35,30 +44,26 @@ public class Main {
             }else{
                 System.out.println("Please give a valid integer!");
             }
-        }
-
-
-
-
-
-
-        public static int[] findSubstractAverage(int[] array) {
-            int average = findAverage(array);
-            int[] newArray = new int[array.length];
-            for(int i = 0; i < array.length; i++) {
-                newArray[i] = array[i] - average;
-            }
-            return newArray;
-        }
-        
-        public static int findAverage(int[] array) {
-            int sum;
-            for(int elements : array) {
-                sum += elements;
-            }
-            return sum / array.length;
-        }
+        } 
     }
+
+    public static int[] findSubstractAverage(int[] array) {
+        int average = findAverage(array);
+        int[] newArray = new int[array.length];
+        for(int i = 0; i < array.length; i++) {
+            newArray[i] = array[i] - average;
+        }
+        return newArray;
+    }
+    
+    public static int findAverage(int[] array) {
+        int sum = 0;
+        for(int elements : array) {
+            sum += elements;
+        }
+        return sum / array.length;
+    }
+
     public static int sumOfOdd(int[] arr) {
         int result = 0;
         int length = arr.length;
@@ -80,7 +85,7 @@ public class Main {
     public static int findMin(int[] array)
     {
         int size = array.length;
-        int min = 0;
+        int min = Integer.MAX_VALUE;
         for(int i = 0; i < size; i++)
         {
             if(array[i] < min)
@@ -93,7 +98,7 @@ public class Main {
     public static int findMax(int[] array)
     {
         int size = array.length;
-        int max = 0;
+        int max = Integer.MIN_VALUE;
         for(int i = 0; i < size; i++)
         {
             if(array[i] > max)
