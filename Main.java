@@ -1,15 +1,6 @@
 public class Main {
     public static void main(String[] args){
 
-        int[] arr = new int[5];
-        arr[0] = 5;
-        arr[1] = 3;
-        arr[2] = 1;
-        arr[3] = 0;
-        arr[4] = 6;
-
-        System.out.println(sumOfOdd(arr));
-        System.out.println(sumOfEven(arr));
 
     }
     public static int sumOfOdd(int[] arr) {
